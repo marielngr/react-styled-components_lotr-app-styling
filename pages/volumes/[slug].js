@@ -21,7 +21,10 @@ export default function VolumeDetail() {
 
   return (
     <>
-      <Link href="/volumes">← All Volumes</Link>
+      <Link href="/volumes">
+        <Image src="/images/chevron-left.svg" alt="" width={20} height={20} />
+        All Volumes
+      </Link>
       <h1>{title}</h1>
       <p>{description}</p>
       <ul>
@@ -40,14 +43,21 @@ export default function VolumeDetail() {
       {previousVolume ? (
         <div>
           <Link href={`/volumes/${previousVolume.slug}`}>
-            ← Previous Volume: {previousVolume.title}
+            <Image src="/images/arrow-left.svg" alt="" width={20} height={20} />
+            Previous Volume: {previousVolume.title}
           </Link>
         </div>
       ) : null}
       {nextVolume ? (
         <div>
           <Link href={`/volumes/${nextVolume.slug}`}>
-            Next Volume: {nextVolume.title} →
+            Next Volume: {nextVolume.title}
+            <Image
+              src="/images/arrow-right.svg"
+              alt=""
+              width={20}
+              height={20}
+            />
           </Link>
         </div>
       ) : null}
