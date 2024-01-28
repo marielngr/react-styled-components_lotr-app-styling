@@ -1,4 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import { Lora } from "next/font/google";
+
+const lora = Lora({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -14,7 +20,8 @@ export const GlobalStyle = createGlobalStyle`
   --color-smoke: #d4d1cd;
 
   /* Font styles */
-  --font-family: serif;
+  /* --font-family: serif; */
+  --font-family: ${lora.style.fontFamily}, serif;
   /*
     use like:
     font: var(--font-body);
@@ -43,6 +50,17 @@ export const GlobalStyle = createGlobalStyle`
 
 
   body {
-    font-family: system-ui;
+    font-family: var(--font-body);
+    margin: 0;
+
+    //Konnte ich nicht testen, ob es funktioniert
+    @media (prefers-color-scheme: light) {
+      color: var(--color-earth);
+      background-color: var(--color-clouds);
+    }
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-smoke);
+      background-color: var(--color-earth);
+    }
   }
 `;

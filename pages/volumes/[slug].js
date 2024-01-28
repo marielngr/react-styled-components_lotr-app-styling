@@ -32,16 +32,14 @@ const StyledUl = styled.ul`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
 `;
 
 const StyledNav = styled.div`
   display: flex;
   justify-content: flex-end;
-`;
-
-const StyledImage = styled(Image)`
-  border: 2px solid green;
-  margin-top: 2.5rem;
 `;
 
 export default function VolumeDetail() {
@@ -64,12 +62,7 @@ export default function VolumeDetail() {
   return (
     <FlexContainer>
       <StyledLink href="/volumes">
-        <StyledImage
-          src="/images/chevron-left.svg"
-          alt=""
-          width={20}
-          height={20}
-        />
+        <Image src="/images/chevron-left.svg" alt="" width={20} height={20} />
         All Volumes
       </StyledLink>
       <h1>{title}</h1>
@@ -94,21 +87,18 @@ export default function VolumeDetail() {
       {previousVolume ? (
         <div>
           <StyledLink href={`/volumes/${previousVolume.slug}`}>
-            <StyledImage
-              src="/images/arrow-left.svg"
-              alt=""
-              width={20}
-              height={20}
-            />
-            Previous Volume: {previousVolume.title}
+            <Image src="/images/arrow-left.svg" alt="" width={20} height={20} />
+            Previous Volume: <br />
+            {previousVolume.title}
           </StyledLink>
         </div>
       ) : null}
       {nextVolume ? (
         <StyledNav>
           <StyledLink href={`/volumes/${nextVolume.slug}`}>
-            Next Volume: {nextVolume.title}
-            <StyledImage
+            Next Volume:
+            <br /> {nextVolume.title}
+            <Image
               src="/images/arrow-right.svg"
               alt=""
               width={20}
